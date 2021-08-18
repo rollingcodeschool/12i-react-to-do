@@ -1,20 +1,14 @@
 import React, { Fragment, useState } from "react";
+import Button from '@material-ui/core/Button';
 
-const Tareas = () => {
+const AddTask = (props) => {
   // nombre del state, nombre de la funcion
-  const [listaTareas, setListaTareas] = useState([]);
   const [tarea, setTarea] = useState("");
-  // const capturarTarea = (e) =>{
-  //     console.log(e.target.value);
-  //     setTarea(e.target.value);
-  // }
   const handleSubmit = (e) => {
     // prevenir que por defecto recargue para no perder info
     e.preventDefault();
-    console.log("en el evento submit");
-    let arreglo = listaTareas;
-    arreglo.push(tarea);
-    setListaTareas(arreglo);
+    // Llamo a la propiedad compartida con mi componente padre que es una funcióna través de props
+    props.handleAddTaskParent(tarea);
     setTarea("");
   };
 
@@ -41,4 +35,4 @@ const Tareas = () => {
   );
 };
 
-export default Tareas;
+export default AddTask;
