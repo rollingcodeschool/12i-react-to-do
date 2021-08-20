@@ -19,15 +19,35 @@ function App() {
 
   const handleAddTask = (addTask) => {
     console.log(addTask);
-    const newTasks = [...tasks, addTask];
+
+    const newTasks = [...tasks];
+    newTasks.push({description: addTask, done: false});
+
     localStorage.setItem('tasks', JSON.stringify(newTasks));
     setTasks(newTasks);
   }
 
   const handleDelTask = (delTask) => {
-    console.log(delTask);
+    console.log('Llamada al elemento padre', delTask);
+    //Forma 1
+    const updTask = tasks.filter((el, index) => index !== delTask);
+    //Forma 2
+    const forEachTask = [];
+    tasks.forEach((el, index) => {
+      console.log(el, index);
+      if(index !== delTask) {
+        forEachTask.push(el);
+      }
+    });
+
+
+    setTasks(forEachTask);
+    localStorage.setItem('tasks', JSON.stringify(forEachTask));
+
+    console.log('updateTask', updTask);
+    console.log('forEachTask', forEachTask);
   }
-  
+ 
   return (
     <Fragment>
       <h1>Tareas</h1>

@@ -1,7 +1,5 @@
 import React from 'react';
 import { Grid,Typography, List } from '@material-ui/core';
-// import FolderIcon from '@material-ui/icons/Folder';
-
 
 // Componente
 import { TaskItem } from './TaskItem'
@@ -9,12 +7,9 @@ import { TaskItem } from './TaskItem'
 
 
 const TaskList = (props) => {
-
-    // const handleDeleteTask = (index) => {
-    //     props.taskToDelete(index);
-    // }
-    // console.log(props.tasksToRender);
+    console.log('TaskList', props);
     const tasksList = [...props.tasksToRender];
+
     return (
         <Grid item xs={12} md={8}>
             <Typography variant="h6">
@@ -24,7 +19,9 @@ const TaskList = (props) => {
             <List>
                 {
                     tasksList.map((task, index) => {
-                        return <TaskItem taskToRender={task} key={index} deleteTask={() => props.taskToDelete(index)} />
+                        return <TaskItem taskToRender={task} 
+                                         key={index} 
+                                         deleteTask={() => props.taskToDelete(index)} />
                     })
                 }
                 
@@ -35,3 +32,8 @@ const TaskList = (props) => {
 };
 
 export default TaskList;
+// task = "Hacer algo"
+// task = {
+//     description: "Hacer algo",
+//     status: "Done"
+// }

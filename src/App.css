@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.done {
+  text-decoration: line-through;
+  color: #b9b9b9;
+}
+.dgblue {
+  color: dodgerblue;
+  background-color: dodgerblue !important;
+}
